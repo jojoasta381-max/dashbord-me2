@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>RankFlow AI — SEO Revenue Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#08090d;
+--bg2:#0e1018;
+--bg3:#141720;
+--bg4:#1a1f2e;
+--card:#111520;
+--accent:#00e5a0;
+--accent-dim:rgba(0,229,160,0.12);
+--accent-border:rgba(0,229,160,0.22);
+--blue:#0ea5e9;
+--amber:#f59e0b;
+--red:#ef4444;
+--purple:#a855f7;
+--text:#edf0f7;
+--text2:#8a94a8;
+--text3:#3d4558;
+--border:rgba(255,255,255,0.06);
+--border2:rgba(255,255,255,0.1);
+--radius:12px;
+--radius-lg:18px;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:3px}
+
+/* SELECTION */
+::selection{background:rgba(0,229,160,0.2);color:var(--accent)}
+
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:68px;display:flex;align-items:center;justify-content:space-between;background:rgba(8,9,13,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:background 0.3s}
+.nav-logo{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--accent);letter-spacing:-0.5px;text-decoration:none}
+.nav-logo span{color:var(--text2);font-weight:500}
+.nav-links{display:flex;align-items:center;gap:6px}
+.nav-links a{padding:7px 16px;color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;border-radius:8px;transition:all 0.15s}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,0.04)}
+.nav-cta{padding:8px 20px;background:var(--accent);color:#000;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none;font-family:'Syne',sans-serif;transition:all 0.15s;letter-spacing:0.2px}
+.nav-cta:hover{background:#00c887;transform:translateY(-1px)}
+.nav-mobile-btn{display:none;background:none;border:none;cursor:pointer;color:var(--text);padding:4px}
+.mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--border);padding:16px 24px;z-index:999;flex-direction:column;gap:4px}
+.mobile-menu a{padding:10px 14px;color:var(--text2);text-decoration:none;font-size:15px;border-radius:8px;display:block}
+.mobile-menu a:hover{background:var(--bg3);color:var(--text)}
+.mobile-menu .nav-cta{margin-top:8px;text-align:center;display:block}
+
+/* ===== HERO ===== */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-glow{position:absolute;top:20%;left:50%;transform:translate(-50%,-50%);width:900px;height:500px;background:radial-gradient(ellipse,rgba(0,229,160,0.07) 0%,transparent 65%);pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%)}
+.hero-particles{position:absolute;inset:0}
+.particle{position:absolute;width:2px;height:2px;border-radius:50%;background:var(--accent);opacity:0;animation:float-up linear infinite}
+@keyframes float-up{0%{opacity:0;transform:translateY(0) scale(1)}20%{opacity:0.6}80%{opacity:0.3}100%{opacity:0;transform:translateY(-120px) scale(0.5)}}
+
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:100px;border:1px solid var(--accent-border);background:var(--accent-dim);font-size:12px;font-weight:600;color:var(--accent);margin-bottom:28px;font-family:'Syne',sans-serif;letter-spacing:0.5px;animation:fade-up 0.6s ease both}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse-dot 2s ease infinite}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.7)}}
+
+.hero-h1{font-family:'Syne',sans-serif;font-size:clamp(36px,6vw,76px);font-weight:800;line-height:1.05;letter-spacing:-2px;margin-bottom:24px;animation:fade-up 0.7s ease 0.1s both}
+.hero-h1 .line2{color:var(--accent)}
+.hero-sub{font-size:clamp(15px,2vw,19px);color:var(--text2);max-width:560px;line-height:1.65;margin-bottom:40px;animation:fade-up 0.7s ease 0.2s both;font-weight:300}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;animation:fade-up 0.7s ease 0.3s both}
+.btn-primary{padding:14px 32px;background:var(--accent);color:#000;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none;font-family:'Syne',sans-serif;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;letter-spacing:0.2px}
+.btn-primary:hover{background:#00c887;transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,229,160,0.25)}
+.btn-secondary{padding:14px 28px;background:transparent;color:var(--text);border:1px solid var(--border2);border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;font-family:'Syne',sans-serif;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+.btn-secondary:hover{background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.2)}
+
+.hero-metrics{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin-top:56px;animation:fade-up 0.7s ease 0.4s both}
+.hero-metric{text-align:center}
+.hm-val{font-family:'Syne',sans-serif;font-size:30px;font-weight:800;color:var(--accent);line-height:1}
+.hm-label{font-size:12px;color:var(--text2);margin-top:4px;font-weight:400}
+.hm-sep{width:1px;background:var(--border2);align-self:stretch}
+
+.hero-dashboard{margin-top:64px;width:100%;max-width:900px;animation:fade-up 0.8s ease 0.5s both}
+.dashboard-preview{background:var(--card);border:1px solid var(--border2);border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.04)}
+.dp-topbar{background:var(--bg2);padding:12px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
+.dp-dots{display:flex;gap:6px}
+.dp-dot{width:10px;height:10px;border-radius:50%}
+.dp-bar{flex:1;background:var(--bg3);border-radius:6px;height:24px;display:flex;align-items:center;padding:0 12px}
+.dp-url{font-size:11px;color:var(--text3)}
+.dp-body{padding:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.dp-card{background:var(--bg2);border-radius:10px;padding:14px;border:1px solid var(--border)}
+.dp-card-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+.dp-card-val{font-family:'Syne',sans-serif;font-size:20px;font-weight:700}
+.dp-card-ch{font-size:11px;margin-top:4px;font-weight:500}
+.dp-chart{grid-column:span 4;background:var(--bg2);border-radius:10px;padding:16px;border:1px solid var(--border);height:90px;position:relative;overflow:hidden}
+.dp-chart-line{position:absolute;bottom:10px;left:16px;right:16px;height:60px}
+
+@keyframes fade-up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== LOGOS ===== */
+.logos{padding:40px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;background:var(--bg2)}
+.logos-track{display:flex;gap:60px;animation:scroll-logos 25s linear infinite;width:max-content}
+.logos-track:hover{animation-play-state:paused}
+.logo-item{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--text3);letter-spacing:1px;text-transform:uppercase;white-space:nowrap;transition:color 0.2s}
+.logo-item:hover{color:var(--text2)}
+@keyframes scroll-logos{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ===== SECTIONS ===== */
+section{padding:100px 24px}
+.container{max-width:1140px;margin:0 auto}
+.section-tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;font-family:'Syne',sans-serif}
+.section-tag::before{content:'';width:16px;height:2px;background:var(--accent);border-radius:1px}
+.section-h2{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,48px);font-weight:800;line-height:1.1;letter-spacing:-1px;margin-bottom:16px}
+.section-sub{font-size:17px;color:var(--text2);max-width:560px;line-height:1.65;font-weight:300}
+.text-center{text-align:center}
+.text-center .section-sub{margin:0 auto}
+.text-center .section-tag{display:block;text-align:center}
+.text-center .section-tag::before{display:none}
+
+/* ===== HOW IT WORKS ===== */
+.how{background:var(--bg2)}
+.steps-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px;position:relative}
+.steps-wrap::before{content:'';position:absolute;top:40px;left:16.6%;right:16.6%;height:1px;background:linear-gradient(90deg,transparent,var(--accent-border) 20%,var(--accent-border) 80%,transparent);z-index:0}
+.step{background:var(--bg2);padding:36px 28px;position:relative;text-align:center;border:1px solid var(--border)}
+.step:first-child{border-radius:var(--radius) 0 0 var(--radius)}
+.step:last-child{border-radius:0 var(--radius) var(--radius) 0}
+.step-num-wrap{position:relative;z-index:1;margin-bottom:20px;display:inline-flex}
+.step-num{width:52px;height:52px;border-radius:14px;background:var(--accent-dim);border:1px solid var(--accent-border);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--accent)}
+.step h3{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;margin-bottom:10px}
+.step p{font-size:14px;color:var(--text2);line-height:1.65}
+
+/* ===== FEATURES ===== */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:60px}
+.feat{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;position:relative;overflow:hidden;transition:border-color 0.2s,transform 0.2s}
+.feat:hover{border-color:var(--accent-border);transform:translateY(-3px)}
+.feat::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,229,160,0.3),transparent);opacity:0;transition:opacity 0.3s}
+.feat:hover::before{opacity:1}
+.feat-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.feat h3{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;margin-bottom:10px}
+.feat p{font-size:13px;color:var(--text2);line-height:1.65}
+.feat-tag{display:inline-block;margin-top:16px;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600;background:var(--accent-dim);color:var(--accent);font-family:'Syne',sans-serif}
+
+/* ===== AUDIT DEMO ===== */
+.audit-section{background:var(--bg2)}
+.audit-demo{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;margin-top:60px}
+.audit-visual{background:var(--card);border:1px solid var(--border2);border-radius:var(--radius-lg);padding:28px}
+.audit-header-row{display:flex;align-items:center;gap:14px;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.audit-site-icon{width:44px;height:44px;border-radius:10px;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.2);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:#ef4444}
+.audit-overall{margin-top:0}
+.score-ring-outer{text-align:center;margin-bottom:24px}
+.big-score{font-family:'Syne',sans-serif;font-size:56px;font-weight:800;line-height:1;color:#ef4444}
+.big-score-label{font-size:13px;color:var(--text2);margin-top:6px}
+.metric-bars{display:flex;flex-direction:column;gap:10px}
+.mbar{display:flex;align-items:center;gap:12px}
+.mbar-label{font-size:12px;color:var(--text2);min-width:130px}
+.mbar-track{flex:1;height:5px;background:var(--bg3);border-radius:3px;overflow:hidden}
+.mbar-fill{height:100%;border-radius:3px;transition:width 1.5s cubic-bezier(0.4,0,0.2,1)}
+.mbar-val{font-size:11px;font-weight:700;min-width:28px;text-align:right}
+.audit-text .section-h2{font-size:clamp(24px,3vw,38px)}
+.issues-list{display:flex;flex-direction:column;gap:8px;margin-top:24px}
+.issue{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:8px;background:var(--bg3)}
+.issue-badge{width:20px;height:20px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;font-weight:800}
+.issue-badge.e{background:rgba(239,68,68,0.15);color:#ef4444}
+.issue-badge.w{background:rgba(245,158,11,0.15);color:#f59e0b}
+.issue span{font-size:13px;color:var(--text2)}
+.issue strong{color:var(--text);font-weight:500}
+.issue-count{margin-left:auto;font-size:11px;font-weight:700}
+
+/* ===== REVENUE ===== */
+.revenue-section{}
+.rev-demo{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;margin-top:60px}
+.rev-visual{background:var(--card);border:1px solid var(--border2);border-radius:var(--radius-lg);padding:28px}
+.rev-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.rev-card{background:var(--bg2);border-radius:10px;padding:16px;text-align:center}
+.rev-card-val{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--accent);line-height:1}
+.rev-card-label{font-size:11px;color:var(--text2);margin-top:4px}
+.rev-big{text-align:center;padding:20px;background:var(--accent-dim);border:1px solid var(--accent-border);border-radius:12px}
+.rev-big-val{font-family:'Syne',sans-serif;font-size:44px;font-weight:800;color:var(--accent);line-height:1}
+.rev-big-label{font-size:12px;color:var(--text2);margin-top:6px}
+.chart-container{width:100%;height:160px;position:relative;margin-top:20px}
+.rev-text .section-h2{font-size:clamp(24px,3vw,38px)}
+
+/* ===== OUTREACH ===== */
+.outreach-section{background:var(--bg2)}
+.outreach-demo{display:grid;grid-template-columns:320px 1fr;gap:24px;margin-top:60px}
+.outreach-config{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px}
+.config-label{font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;display:block}
+.config-input{width:100%;background:var(--bg2);border:1px solid var(--border2);border-radius:8px;padding:9px 12px;color:var(--text);font-size:13px;font-family:'DM Sans',sans-serif;margin-bottom:14px;outline:none;transition:border-color 0.15s}
+.config-input:focus{border-color:var(--accent)}
+.tone-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:16px}
+.tone-opt{padding:8px;border-radius:8px;border:1px solid var(--border2);background:transparent;color:var(--text2);font-size:12px;cursor:pointer;transition:all 0.12s;font-weight:500;font-family:'DM Sans',sans-serif}
+.tone-opt.on{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
+.tone-opt:hover:not(.on){border-color:var(--border2);color:var(--text);background:var(--bg3)}
+.outreach-result{display:flex;flex-direction:column;gap:14px}
+.msg-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px}
+.msg-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.msg-type-label{font-size:12px;font-weight:700;font-family:'Syne',sans-serif;color:var(--text)}
+.copy-btn{padding:5px 12px;background:var(--bg2);border:1px solid var(--border2);border-radius:6px;font-size:11px;color:var(--text2);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.12s}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent)}
+.msg-subject{font-size:12px;color:var(--accent);margin-bottom:10px;font-weight:500}
+.msg-body{font-size:13px;color:var(--text2);line-height:1.75;white-space:pre-line}
+.msg-body strong{color:var(--text);font-weight:500}
+
+/* ===== PRICING ===== */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:60px}
+.plan{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;transition:border-color 0.2s,transform 0.2s}
+.plan.featured{border-color:var(--accent-border);background:linear-gradient(135deg,rgba(0,229,160,0.04),rgba(0,229,160,0.01));transform:scale(1.02)}
+.plan:hover:not(.featured){border-color:var(--border2);transform:translateY(-2px)}
+.plan-popular{display:inline-block;padding:4px 12px;border-radius:20px;background:var(--accent-dim);color:var(--accent);font-size:11px;font-weight:700;font-family:'Syne',sans-serif;margin-bottom:12px;border:1px solid var(--accent-border)}
+.plan-name{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text2);margin-bottom:6px}
+.plan-price{font-family:'Syne',sans-serif;font-size:38px;font-weight:800;line-height:1;color:var(--text)}
+.plan-price.acc{color:var(--accent)}
+.plan-price span{font-size:15px;font-weight:400;color:var(--text2)}
+.plan-desc{font-size:13px;color:var(--text2);margin:10px 0 20px;line-height:1.5}
+.plan-feats{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.plan-feats li{font-size:13px;color:var(--text2);display:flex;align-items:flex-start;gap:8px}
+.plan-feats li::before{content:'';width:14px;height:14px;border-radius:50%;background:var(--accent-dim);border:1px solid var(--accent-border);flex-shrink:0;margin-top:2px;background-image:url("data:image/svg+xml,%3Csvg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 3l2 2 4-4' stroke='%2300e5a0' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
+.plan-btn{display:block;width:100%;padding:11px;border-radius:9px;font-size:14px;font-weight:700;text-align:center;cursor:pointer;border:none;font-family:'Syne',sans-serif;transition:all 0.15s;text-decoration:none}
+.plan-btn.light{background:var(--accent);color:#000}
+.plan-btn.light:hover{background:#00c887;transform:translateY(-1px)}
+.plan-btn.outline{background:transparent;color:var(--text);border:1px solid var(--border2)}
+.plan-btn.outline:hover{background:var(--bg3);border-color:var(--border2)}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials-section{background:var(--bg2)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:60px}
+.testimonial{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:26px;transition:border-color 0.2s}
+.testimonial:hover{border-color:var(--border2)}
+.stars{display:flex;gap:3px;margin-bottom:16px}
+.star{width:14px;height:14px;color:var(--amber);font-size:13px}
+.testimonial-text{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:20px;font-style:italic}
+.testimonial-text::before{content:'"'}
+.testimonial-text::after{content:'"'}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.author-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;font-family:'Syne',sans-serif;flex-shrink:0}
+.author-name{font-size:13px;font-weight:600;color:var(--text)}
+.author-role{font-size:12px;color:var(--text3)}
+
+/* ===== WHY ===== */
+.why-section{}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:60px}
+.why-list{display:flex;flex-direction:column;gap:20px}
+.why-item{display:flex;gap:16px;padding:20px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);transition:border-color 0.2s}
+.why-item:hover{border-color:var(--accent-border)}
+.why-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.why-item h4{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:4px}
+.why-item p{font-size:13px;color:var(--text2);line-height:1.6}
+.why-stats{display:flex;flex-direction:column;gap:16px}
+.why-stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px}
+.why-stat-val{font-family:'Syne',sans-serif;font-size:48px;font-weight:800;color:var(--accent);line-height:1}
+.why-stat-label{font-size:14px;color:var(--text2);margin-top:6px}
+.why-stat-sub{font-size:12px;color:var(--text3);margin-top:4px}
+
+/* ===== CTA ===== */
+.cta-section{background:var(--bg2)}
+.cta-box{background:var(--card);border:1px solid var(--accent-border);border-radius:24px;padding:64px;text-align:center;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:400px;height:200px;background:radial-gradient(ellipse,rgba(0,229,160,0.1),transparent 70%);pointer-events:none}
+.cta-box .section-h2{font-size:clamp(28px,4vw,44px)}
+.cta-btns{display:flex;gap:12px;justify-content:center;margin-top:32px;flex-wrap:wrap}
+.cta-note{font-size:12px;color:var(--text3);margin-top:16px}
+
+/* ===== FOOTER ===== */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:60px 24px 32px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand .nav-logo{display:inline-block;margin-bottom:12px;font-size:22px}
+.footer-brand p{font-size:13px;color:var(--text2);line-height:1.65;max-width:260px}
+.footer-col h5{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--text2);margin-bottom:14px}
+.footer-col a{display:block;font-size:13px;color:var(--text3);text-decoration:none;margin-bottom:8px;transition:color 0.15s}
+.footer-col a:hover{color:var(--text2)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:24px;border-top:1px solid var(--border)}
+.footer-bottom p{font-size:12px;color:var(--text3)}
+
+/* ===== SCROLL ANIMATIONS ===== */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.65s ease,transform 0.65s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-left{opacity:0;transform:translateX(-24px);transition:opacity 0.65s ease,transform 0.65s ease}
+.reveal-left.visible{opacity:1;transform:none}
+.reveal-right{opacity:0;transform:translateX(24px);transition:opacity 0.65s ease,transform 0.65s ease}
+.reveal-right.visible{opacity:1;transform:none}
+.stagger > *{opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease}
+.stagger.visible > *:nth-child(1){opacity:1;transform:none;transition-delay:0s}
+.stagger.visible > *:nth-child(2){opacity:1;transform:none;transition-delay:0.08s}
+.stagger.visible > *:nth-child(3){opacity:1;transform:none;transition-delay:0.16s}
+.stagger.visible > *:nth-child(4){opacity:1;transform:none;transition-delay:0.24s}
+.stagger.visible > *:nth-child(5){opacity:1;transform:none;transition-delay:0.32s}
+.stagger.visible > *:nth-child(6){opacity:1;transform:none;transition-delay:0.4s}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  nav{padding:0 20px}
+  .nav-links{display:none}
+  .nav-cta{display:none}
+  .nav-mobile-btn{display:block}
+  .mobile-menu.open{display:flex}
+  .hero{padding:100px 20px 60px}
+  .steps-wrap{grid-template-columns:1fr;gap:0}
+  .step:first-child{border-radius:var(--radius) var(--radius) 0 0}
+  .step:last-child{border-radius:0 0 var(--radius) var(--radius)}
+  .steps-wrap::before{display:none}
+  .features-grid{grid-template-columns:1fr 1fr}
+  .audit-demo,.rev-demo{grid-template-columns:1fr}
+  .outreach-demo{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr}
+  .plan.featured{transform:none}
+  .testimonials-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .dp-body{grid-template-columns:1fr 1fr}
+  .dp-chart{grid-column:span 2}
+  .hero-metrics{gap:20px}
+  .hm-sep{display:none}
+  section{padding:64px 20px}
+  .cta-box{padding:36px 20px}
+}
+@media(max-width:600px){
+  .features-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .rev-cards{grid-template-columns:1fr}
+  .hero-h1{letter-spacing:-1px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Rank<span>Flow</span></a>
+  <div class="nav-links">
+    <a href="#how">How It Works</a>
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#testimonials">Reviews</a>
+  </div>
+  <a href="#pricing" class="nav-cta">Start Free</a>
+  <button class="nav-mobile-btn" id="menuBtn" aria-label="Menu">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#how" onclick="closeMobile()">How It Works</a>
+  <a href="#features" onclick="closeMobile()">Features</a>
+  <a href="#pricing" onclick="closeMobile()">Pricing</a>
+  <a href="#testimonials" onclick="closeMobile()">Reviews</a>
+  <a href="#pricing" class="nav-cta" onclick="closeMobile()">Start Free</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <div class="hero-glow"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-particles" id="particles"></div>
+  </div>
+  <div class="hero-badge"><span class="badge-dot"></span>AI-Powered SEO Intelligence</div>
+  <h1 class="hero-h1">Find Businesses Losing<br><span class="line2">Revenue from Poor SEO</span></h1>
+  <p class="hero-sub">Discover, analyze, and convert high-value SEO leads with AI. Turn weak websites into paying clients — automatically and at scale.</p>
+  <div class="hero-btns">
+    <a href="#pricing" class="btn-primary">
+      Start Free Audit
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <a href="#how" class="btn-secondary">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 5.5l4 2.5-4 2.5V5.5z" fill="currentColor"/></svg>
+      Watch Demo
+    </a>
+  </div>
+  <div class="hero-metrics">
+    <div class="hero-metric"><div class="hm-val" id="cnt1">0</div><div class="hm-label">Businesses Analyzed</div></div>
+    <div class="hm-sep"></div>
+    <div class="hero-metric"><div class="hm-val" id="cnt2">$0M</div><div class="hm-label">Revenue Pipeline Found</div></div>
+    <div class="hm-sep"></div>
+    <div class="hero-metric"><div class="hm-val" id="cnt3">0%</div><div class="hm-label">Avg Outreach Response Rate</div></div>
+    <div class="hm-sep"></div>
+    <div class="hero-metric"><div class="hm-val" id="cnt4">0</div><div class="hm-label">Clients Won This Month</div></div>
+  </div>
+  <div class="hero-dashboard reveal">
+    <div class="dashboard-preview">
+      <div class="dp-topbar">
+        <div class="dp-dots">
+          <div class="dp-dot" style="background:#ef4444"></div>
+          <div class="dp-dot" style="background:#f59e0b"></div>
+          <div class="dp-dot" style="background:#00e5a0"></div>
+        </div>
+        <div class="dp-bar"><span class="dp-url">app.rankflow.ai/dashboard</span></div>
+      </div>
+      <div class="dp-body">
+        <div class="dp-card">
+          <div class="dp-card-label">Total Leads</div>
+          <div class="dp-card-val" style="color:var(--accent)">2,847</div>
+          <div class="dp-card-ch" style="color:var(--accent)">↑ 12.4% this month</div>
+        </div>
+        <div class="dp-card">
+          <div class="dp-card-label">Revenue Opp.</div>
+          <div class="dp-card-val" style="color:var(--amber)">$4.2M</div>
+          <div class="dp-card-ch" style="color:var(--amber)">↑ 23% pipeline</div>
+        </div>
+        <div class="dp-card">
+          <div class="dp-card-label">Hot Leads</div>
+          <div class="dp-card-val" style="color:var(--red)">341</div>
+          <div class="dp-card-ch" style="color:var(--red)">8 new today</div>
+        </div>
+        <div class="dp-card">
+          <div class="dp-card-label">Conversion</div>
+          <div class="dp-card-val" style="color:var(--blue)">34.7%</div>
+          <div class="dp-card-ch" style="color:var(--text2)">Outreach rate</div>
+        </div>
+        <div class="dp-chart">
+          <canvas id="heroChart" width="860" height="60" aria-label="Dashboard trend chart" role="img">Lead acquisition trend</canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<div class="logos">
+  <div class="logos-track" id="logosTrack">
+    <span class="logo-item">TechNova Inc.</span>
+    <span class="logo-item">DataPulse</span>
+    <span class="logo-item">GrowthBase</span>
+    <span class="logo-item">NexaHealth</span>
+    <span class="logo-item">CloudMesh</span>
+    <span class="logo-item">LegalEdge Pro</span>
+    <span class="logo-item">Launchify</span>
+    <span class="logo-item">OpticSell</span>
+    <span class="logo-item">RankBridge</span>
+    <span class="logo-item">Shopvault</span>
+    <span class="logo-item">TechNova Inc.</span>
+    <span class="logo-item">DataPulse</span>
+    <span class="logo-item">GrowthBase</span>
+    <span class="logo-item">NexaHealth</span>
+    <span class="logo-item">CloudMesh</span>
+    <span class="logo-item">LegalEdge Pro</span>
+    <span class="logo-item">Launchify</span>
+    <span class="logo-item">OpticSell</span>
+    <span class="logo-item">RankBridge</span>
+    <span class="logo-item">Shopvault</span>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-tag">How It Works</div>
+      <h2 class="section-h2">Three steps from discovery<br>to signed client</h2>
+      <p class="section-sub">Our AI handles the heavy lifting — you just close deals.</p>
+    </div>
+    <div class="steps-wrap stagger">
+      <div class="step">
+        <div class="step-num-wrap"><div class="step-num">1</div></div>
+        <h3>Discover Weak SEO</h3>
+        <p>Enter any industry, location, or website. Our AI instantly scans thousands of businesses to surface those with poor SEO health and the highest revenue potential.</p>
+      </div>
+      <div class="step">
+        <div class="step-num-wrap"><div class="step-num">2</div></div>
+        <h3>Audit, Score & Estimate</h3>
+        <p>Get a full technical audit, keyword gap analysis, backlink health check, and an AI-calculated revenue opportunity estimate — scored 0–100 for instant prioritization.</p>
+      </div>
+      <div class="step">
+        <div class="step-num-wrap"><div class="step-num">3</div></div>
+        <h3>Outreach & Convert</h3>
+        <p>AI writes personalized cold emails and LinkedIn messages with your exact SEO findings. Track conversations, send proposals, and close deals in one place.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-tag">Platform Features</div>
+      <h2 class="section-h2">Everything you need<br>to win SEO clients</h2>
+      <p class="section-sub">Built for freelancers, agencies, and growth consultants who want to scale without the manual grind.</p>
+    </div>
+    <div class="features-grid stagger">
+      <div class="feat">
+        <div class="feat-icon" style="background:var(--accent-dim)">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="10" cy="10" r="7" stroke="#00e5a0" stroke-width="1.8"/><path d="M16 16l4 4" stroke="#00e5a0" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Lead Discovery Engine</h3>
+        <p>Filter by industry, location, business size, and SEO difficulty. Surface the highest-value prospects first with smart sorting and opportunity scoring.</p>
+        <span class="feat-tag">100K+ businesses</span>
+      </div>
+      <div class="feat">
+        <div class="feat-icon" style="background:rgba(14,165,233,0.1)">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="16" rx="3" stroke="#0ea5e9" stroke-width="1.8"/><path d="M7 11h8M7 7h5M7 15h6" stroke="#0ea5e9" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Deep SEO Audits</h3>
+        <p>Technical SEO, on-page analysis, Core Web Vitals, backlink health, and keyword coverage generated in seconds. 50+ checkpoints per site.</p>
+        <span class="feat-tag" style="background:rgba(14,165,233,0.1);color:#0ea5e9">50+ data points</span>
+      </div>
+      <div class="feat">
+        <div class="feat-icon" style="background:rgba(245,158,11,0.1)">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 17l4-6 4 3 4-8 4 4" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Revenue Calculator</h3>
+        <p>Estimate exact dollars left on the table with traffic projections, keyword opportunity modeling, and industry conversion rate benchmarks.</p>
+        <span class="feat-tag" style="background:rgba(245,158,11,0.1);color:#f59e0b">Industry-accurate</span>
+      </div>
+      <div class="feat">
+        <div class="feat-icon" style="background:rgba(168,85,247,0.1)">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2l2.5 5L19 8l-4 3.9 1 5.5L11 15l-5 2.4 1-5.5L3 8l5.5-1z" fill="#a855f7" opacity="0.8"/></svg>
+        </div>
+        <h3>AI Lead Scoring</h3>
+        <p>Every lead scored on 6 weighted factors: SEO weakness, traffic potential, industry competitiveness, revenue opportunity, website quality, and conversion likelihood.</p>
+        <span class="feat-tag" style="background:rgba(168,85,247,0.1);color:#a855f7">6-factor score</span>
+      </div>
+      <div class="feat">
+        <div class="feat-icon" style="background:var(--accent-dim)">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M20 2L2 8.5l7 3L11 20l9-18z" fill="#00e5a0" opacity="0.8"/></svg>
+        </div>
+        <h3>AI Outreach Generator</h3>
+        <p>Personalized cold emails and LinkedIn messages written by Claude AI — using real SEO data, specific issues, and estimated revenue numbers to drive replies.</p>
+        <span class="feat-tag">Claude-powered</span>
+      </div>
+      <div class="feat">
+        <div class="feat-icon" style="background:rgba(239,68,68,0.1)">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M19 4H3a1.5 1.5 0 00-1.5 1.5v11A1.5 1.5 0 003 18h4l4 3 4-3h4a1.5 1.5 0 001.5-1.5V5.5A1.5 1.5 0 0019 4z" stroke="#ef4444" stroke-width="1.8"/></svg>
+        </div>
+        <h3>CRM Messaging</h3>
+        <p>Built-in inbox with conversation stages (New → Interested → Proposal → Closed), follow-up reminders, and deal pipeline tracking. No extra CRM needed.</p>
+        <span class="feat-tag" style="background:rgba(239,68,68,0.1);color:#ef4444">Built-in CRM</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIT DEMO -->
+<section class="audit-section" id="audit">
+  <div class="container">
+    <div class="audit-demo">
+      <div class="audit-visual reveal-left">
+        <div class="audit-header-row">
+          <div class="audit-site-icon">DP</div>
+          <div>
+            <div style="font-size:15px;font-weight:700;font-family:'Syne',sans-serif">DataPulse — datapulse.co</div>
+            <div style="font-size:12px;color:var(--text2);margin-top:2px">SaaS / Analytics · ~91K monthly visits</div>
+          </div>
+          <div style="margin-left:auto">
+            <div style="font-size:10px;color:var(--text3);text-align:right">SEO Health</div>
+            <div style="font-size:28px;font-weight:800;font-family:'Syne',sans-serif;color:#ef4444;line-height:1">19/100</div>
+          </div>
+        </div>
+        <div class="metric-bars" id="metricBars">
+          <div class="mbar"><span class="mbar-label">Technical SEO</span><div class="mbar-track"><div class="mbar-fill" style="width:0%;background:#ef4444" data-w="23"></div></div><span class="mbar-val" style="color:#ef4444">23</span></div>
+          <div class="mbar"><span class="mbar-label">On-Page SEO</span><div class="mbar-track"><div class="mbar-fill" style="width:0%;background:#f59e0b" data-w="41"></div></div><span class="mbar-val" style="color:#f59e0b">41</span></div>
+          <div class="mbar"><span class="mbar-label">Backlink Health</span><div class="mbar-track"><div class="mbar-fill" style="width:0%;background:#ef4444" data-w="18"></div></div><span class="mbar-val" style="color:#ef4444">18</span></div>
+          <div class="mbar"><span class="mbar-label">Keyword Coverage</span><div class="mbar-track"><div class="mbar-fill" style="width:0%;background:#f59e0b" data-w="37"></div></div><span class="mbar-val" style="color:#f59e0b">37</span></div>
+          <div class="mbar"><span class="mbar-label">Core Web Vitals</span><div class="mbar-track"><div class="mbar-fill" style="width:0%;background:#ef4444" data-w="28"></div></div><span class="mbar-val" style="color:#ef4444">28</span></div>
+        </div>
+        <div class="issues-list" style="margin-top:20px">
+          <div class="issue"><div class="issue-badge e">✕</div><span><strong>34 pages</strong> missing meta descriptions</span><span class="issue-count" style="color:#ef4444">34</span></div>
+          <div class="issue"><div class="issue-badge e">✕</div><span>Page speed score <strong>41/100</strong> on mobile</span><span class="issue-count" style="color:#ef4444">FAIL</span></div>
+          <div class="issue"><div class="issue-badge w">!</div><span><strong>12 broken</strong> internal links found</span><span class="issue-count" style="color:#f59e0b">12</span></div>
+          <div class="issue"><div class="issue-badge w">!</div><span><strong>47 images</strong> missing alt text</span><span class="issue-count" style="color:#f59e0b">47</span></div>
+          <div class="issue"><div class="issue-badge e">✕</div><span>Core Web Vitals failing — <strong>LCP 8.2s</strong></span><span class="issue-count" style="color:#ef4444">FAIL</span></div>
+        </div>
+      </div>
+      <div class="audit-text reveal-right">
+        <div class="section-tag">SEO Audit Engine</div>
+        <h2 class="section-h2">Full audit in seconds,<br>not hours</h2>
+        <p style="color:var(--text2);font-size:15px;line-height:1.7;margin-bottom:20px;font-weight:300">We analyze every technical signal, on-page element, backlink profile, and keyword gap — then turn it into a clear report your prospects can't ignore.</p>
+        <p style="color:var(--text2);font-size:15px;line-height:1.7;font-weight:300">No more manual crawling. No more copy-pasting into spreadsheets. Just actionable insights with an overall health score and a direct path to revenue.</p>
+        <div style="display:flex;gap:20px;margin-top:32px;flex-wrap:wrap">
+          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--accent)">50+</div><div style="font-size:12px;color:var(--text2);margin-top:2px">SEO checkpoints</div></div>
+          <div style="width:1px;background:var(--border)"></div>
+          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--accent)">&lt;8s</div><div style="font-size:12px;color:var(--text2);margin-top:2px">Avg audit time</div></div>
+          <div style="width:1px;background:var(--border)"></div>
+          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--accent)">100%</div><div style="font-size:12px;color:var(--text2);margin-top:2px">Automated</div></div>
+        </div>
+        <a href="#pricing" class="btn-primary" style="margin-top:32px;display:inline-flex">Run Your First Audit <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVENUE -->
+<section id="revenue">
+  <div class="container">
+    <div class="rev-demo">
+      <div class="rev-text reveal-left">
+        <div class="section-tag">Revenue Calculator</div>
+        <h2 class="section-h2">Show the exact cost<br>of bad SEO</h2>
+        <p style="color:var(--text2);font-size:15px;line-height:1.7;margin-bottom:20px;font-weight:300">Nothing converts a prospect faster than seeing real dollars lost. Our calculator combines traffic data, industry conversion benchmarks, and average customer values to produce a hard number.</p>
+        <p style="color:var(--text2);font-size:15px;line-height:1.7;font-weight:300">That number becomes the opening line of your outreach. Suddenly, you're not selling SEO — you're returning lost revenue.</p>
+        <div style="background:var(--card);border:1px solid var(--accent-border);border-radius:var(--radius);padding:20px;margin-top:28px">
+          <div style="font-size:12px;color:var(--text2);margin-bottom:6px">DataPulse is losing an estimated:</div>
+          <div style="font-family:'Syne',sans-serif;font-size:40px;font-weight:800;color:var(--accent);line-height:1">$1.7M / year</div>
+          <div style="font-size:12px;color:var(--text2);margin-top:6px">due to poor SEO — 68K visitors/month not captured</div>
+        </div>
+        <a href="#pricing" class="btn-primary" style="margin-top:28px;display:inline-flex">Calculate Any Website <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="rev-visual reveal-right">
+        <div style="font-size:12px;font-weight:700;font-family:'Syne',sans-serif;color:var(--text2);margin-bottom:14px;text-transform:uppercase;letter-spacing:0.5px">Opportunity Breakdown</div>
+        <div class="rev-cards">
+          <div class="rev-card"><div class="rev-card-val">68K</div><div class="rev-card-label">Missed Monthly Visitors</div></div>
+          <div class="rev-card"><div class="rev-card-val">+340%</div><div class="rev-card-label">Ranking Gain Potential</div></div>
+          <div class="rev-card"><div class="rev-card-val">1,360</div><div class="rev-card-label">Leads Lost per Month</div></div>
+          <div class="rev-card"><div class="rev-card-val">$142K</div><div class="rev-card-label" style="color:var(--accent)">Monthly Recoverable</div></div>
+        </div>
+        <div class="rev-big">
+          <div style="font-size:11px;color:var(--text2);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px">Annual Revenue Opportunity</div>
+          <div class="rev-big-val">$1,704,000</div>
+          <div class="rev-big-label">recoverable with proper SEO strategy</div>
+        </div>
+        <div class="chart-container">
+          <canvas id="revChart" role="img" aria-label="12-month revenue opportunity projection chart">Revenue projection growing monthly from $0 to $142K over 12 months</canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTREACH -->
+<section class="outreach-section" id="outreach">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-tag">AI Outreach Generator</div>
+      <h2 class="section-h2">Personalized messages that<br>actually get replies</h2>
+      <p class="section-sub">Claude AI writes every message using real data from the audit — no generic templates, no guesswork.</p>
+    </div>
+    <div class="outreach-demo reveal">
+      <div class="outreach-config">
+        <label class="config-label">Company</label>
+        <input class="config-input" value="DataPulse" id="outCo"/>
+        <label class="config-label">Website</label>
+        <input class="config-input" value="datapulse.co" id="outUrl"/>
+        <label class="config-label">Your Service</label>
+        <select class="config-input" id="outSvc" style="cursor:pointer">
+          <option>Full SEO Package</option>
+          <option>Technical SEO Audit</option>
+          <option>Content Strategy</option>
+          <option>Link Building</option>
+        </select>
+        <label class="config-label" style="margin-top:2px">Tone</label>
+        <div class="tone-grid">
+          <button class="tone-opt on" onclick="selectTone(this)">Professional</button>
+          <button class="tone-opt" onclick="selectTone(this)">Consultative</button>
+          <button class="tone-opt" onclick="selectTone(this)">Friendly</button>
+          <button class="tone-opt" onclick="selectTone(this)">Direct</button>
+        </div>
+        <button class="btn-primary" style="width:100%;justify-content:center" onclick="regenMsg()">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.5 8A5.5 5.5 0 112.5 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M13.5 4v4h-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Generate with AI
+        </button>
+      </div>
+      <div class="outreach-result">
+        <div class="msg-card">
+          <div class="msg-card-head">
+            <span class="msg-type-label">Cold Email</span>
+            <button class="copy-btn" onclick="copyMsg('emailBody')">Copy</button>
+          </div>
+          <div class="msg-subject" id="emailSubject">Subject: Your website is leaving $1.7M on the table</div>
+          <div class="msg-body" id="emailBody">Hi DataPulse team,
+
+I came across datapulse.co while researching analytics platforms and something jumped out immediately — your site has a technical SEO score of just 19/100.
+
+Here's what this means in real numbers:
+• ~68,000 potential monthly visitors aren't finding you
+• An estimated 1,360 qualified leads going to competitors
+• Roughly <strong>$142K/month in recoverable revenue</strong>
+
+I specialize in Full SEO Package for SaaS companies, and I've helped similar businesses see 200–400% organic traffic growth within 6 months.
+
+Would you be open to a quick 15-minute call to walk through exactly what's happening?
+
+Best,
+Alex</div>
+        </div>
+        <div class="msg-card">
+          <div class="msg-card-head">
+            <span class="msg-type-label">LinkedIn Message</span>
+            <button class="copy-btn" onclick="copyMsg('linkedinBody')">Copy</button>
+          </div>
+          <div class="msg-body" id="linkedinBody">Hey [Name], noticed datapulse.co is ranking well below its potential — you're missing ~68K monthly visitors. I help SaaS companies fix exactly this. Mind if I share a 2-minute breakdown?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" id="testimonials">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-tag">Customer Stories</div>
+      <h2 class="section-h2">Agencies love<br>RankFlow AI</h2>
+      <p class="section-sub">See how freelancers and agencies are transforming their SEO sales process.</p>
+    </div>
+    <div class="testimonials-grid stagger">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">I used to spend 4 hours manually researching each prospect. With RankFlow, I find 50 qualified leads, get full audits, and generate personalized outreach in under 30 minutes. My pipeline tripled in 60 days.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background:rgba(0,229,160,0.12);color:var(--accent)">MR</div>
+          <div><div class="author-name">Marcus Reynolds</div><div class="author-role">SEO Freelancer, Austin TX</div></div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">The revenue calculator is the killer feature. Showing a prospect they're losing $800K/year changes the entire conversation. We closed a $4,500/month retainer within 48 hours of our first outreach using RankFlow data.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background:rgba(14,165,233,0.12);color:#0ea5e9">SL</div>
+          <div><div class="author-name">Sarah Liu</div><div class="author-role">Founder, GrowthPeak Agency</div></div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">We run a 6-person SEO agency and RankFlow replaced 3 separate tools we were paying for. The automated workflow — discover → audit → score → outreach — runs while we sleep. Genuinely impressive product.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background:rgba(168,85,247,0.12);color:#a855f7">DJ</div>
+          <div><div class="author-name">David Jensen</div><div class="author-role">Director, SearchStack Agency</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why-section" id="why">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-tag">Why This Matters</div>
+      <h2 class="section-h2">SEO sales is broken.<br>We're fixing it.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-list stagger">
+        <div class="why-item">
+          <div class="why-icon" style="background:rgba(239,68,68,0.1)"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3v7l4 4" stroke="#ef4444" stroke-width="1.8" stroke-linecap="round"/><circle cx="10" cy="10" r="7" stroke="#ef4444" stroke-width="1.5"/></svg></div>
+          <div>
+            <h4>Businesses lose millions silently</h4>
+            <p>68% of businesses have critical SEO issues costing them revenue — and most don't know it. That's your opportunity to add real value.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon" style="background:rgba(245,158,11,0.1)"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M4 6h8M4 14h10" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <div>
+            <h4>Manual prospecting wastes time</h4>
+            <p>Agencies spend 40% of their time on prospecting and analysis. RankFlow automates discovery, audit, scoring, and outreach generation.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon" style="background:var(--accent-dim)"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 15l4-6 4 3 4-7 4 4" stroke="#00e5a0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div>
+            <h4>Value-driven beats cold outreach</h4>
+            <p>Showing a prospect their exact revenue loss converts 3x better than generic pitches. RankFlow transforms every outreach into a value-first conversation.</p>
+          </div>
+        </div>
+      </div>
+      <div class="why-stats stagger">
+        <div class="why-stat-card">
+          <div class="why-stat-val">847 hrs</div>
+          <div class="why-stat-label">Saved per month vs manual prospecting</div>
+          <div class="why-stat-sub">Based on average agency of 5 people</div>
+        </div>
+        <div class="why-stat-card" style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:var(--amber);line-height:1">3x</div>
+            <div style="font-size:13px;color:var(--text2);margin-top:4px">Higher reply rate vs generic outreach</div>
+          </div>
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:var(--blue);line-height:1">71</div>
+            <div style="font-size:13px;color:var(--text2);margin-top:4px">Avg clients closed per user per month</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-tag">Pricing</div>
+      <h2 class="section-h2">Simple, transparent pricing.<br>Start free today.</h2>
+      <p class="section-sub">No hidden fees. Cancel anytime. Scale as your pipeline grows.</p>
+    </div>
+    <div class="pricing-grid stagger">
+      <div class="plan">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price">$0<span>/month</span></div>
+        <p class="plan-desc">Perfect for freelancers exploring the platform.</p>
+        <ul class="plan-feats">
+          <li>25 leads per month</li>
+          <li>5 SEO audits per month</li>
+          <li>Basic outreach templates</li>
+          <li>Revenue calculator</li>
+          <li>Email support</li>
+        </ul>
+        <a href="#" class="plan-btn outline">Get Started Free</a>
+      </div>
+      <div class="plan featured">
+        <div class="plan-popular">Most Popular</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price acc">$97<span>/month</span></div>
+        <p class="plan-desc">For serious freelancers and growing agencies.</p>
+        <ul class="plan-feats">
+          <li>500 leads per month</li>
+          <li>Unlimited SEO audits</li>
+          <li>AI outreach generator</li>
+          <li>Revenue calculator + scenarios</li>
+          <li>Built-in CRM messaging</li>
+          <li>Analytics dashboard</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="#" class="plan-btn light">Start Pro Trial</a>
+      </div>
+      <div class="plan">
+        <div class="plan-name">Agency</div>
+        <div class="plan-price">$297<span>/month</span></div>
+        <p class="plan-desc">For teams closing high-value retainers at scale.</p>
+        <ul class="plan-feats">
+          <li>Unlimited leads</li>
+          <li>White-label PDF reports</li>
+          <li>API access</li>
+          <li>5 team seats included</li>
+          <li>Workflow automation</li>
+          <li>Dedicated account manager</li>
+        </ul>
+        <a href="#" class="plan-btn outline">Contact Sales</a>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:13px;color:var(--text3);margin-top:24px">All plans include a 14-day free trial. No credit card required.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="cta">
+  <div class="container">
+    <div class="cta-box reveal">
+      <div class="section-tag" style="display:inline-flex;justify-content:center;margin-bottom:16px">Start Today</div>
+      <h2 class="section-h2">Ready to turn weak SEO<br>into paying clients?</h2>
+      <p style="color:var(--text2);font-size:16px;margin-top:12px;font-weight:300">Join 1,200+ freelancers and agencies already using RankFlow AI<br>to build their SEO client pipeline.</p>
+      <div class="cta-btns">
+        <a href="#pricing" class="btn-primary">Start Free Audit <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="#features" class="btn-secondary">Explore Features</a>
+      </div>
+      <p class="cta-note">Free forever plan available · No credit card required · Setup in under 5 minutes</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">Rank<span>Flow</span></a>
+        <p>AI-powered SEO lead generation and client acquisition for freelancers and agencies who want to scale.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Product</h5>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#how">How It Works</a>
+        <a href="#">Changelog</a>
+        <a href="#">API Docs</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+        <a href="#">Careers</a>
+        <a href="#">Press</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+        <a href="#">GDPR</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 RankFlow AI. All rights reserved.</p>
+      <p style="color:var(--text3)">Built with Claude AI · <span style="color:var(--accent)">rankflow.ai</span></p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+/* ===== MOBILE MENU ===== */
+const menuBtn=document.getElementById('menuBtn');
+const mobileMenu=document.getElementById('mobileMenu');
+menuBtn.addEventListener('click',()=>mobileMenu.classList.toggle('open'));
+function closeMobile(){mobileMenu.classList.remove('open');}
+document.addEventListener('click',e=>{if(!menuBtn.contains(e.target)&&!mobileMenu.contains(e.target))mobileMenu.classList.remove('open');});
+
+/* ===== NAV SCROLL ===== */
+window.addEventListener('scroll',()=>{
+  const nav=document.getElementById('navbar');
+  nav.style.background=window.scrollY>20?'rgba(8,9,13,0.95)':'rgba(8,9,13,0.85)';
+},{passive:true});
+
+/* ===== PARTICLES ===== */
+(function(){
+  const c=document.getElementById('particles');
+  if(!c)return;
+  const N=18;
+  for(let i=0;i<N;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    p.style.cssText=`left:${Math.random()*100}%;top:${40+Math.random()*60}%;animation-duration:${4+Math.random()*6}s;animation-delay:${Math.random()*8}s;opacity:0`;
+    c.appendChild(p);
+  }
+})();
+
+/* ===== COUNTER ANIMATION ===== */
+function animateCount(el,target,suffix,prefix,duration){
+  const start=performance.now();
+  function step(now){
+    const p=Math.min((now-start)/duration,1);
+    const ease=1-Math.pow(1-p,3);
+    const v=Math.round(ease*target);
+    el.textContent=(prefix||'')+v.toLocaleString()+(suffix||'');
+    if(p<1)requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+let countersStarted=false;
+function startCounters(){
+  if(countersStarted)return;
+  countersStarted=true;
+  animateCount(document.getElementById('cnt1'),2847,'+',' ',1800);
+  setTimeout(()=>{ const el=document.getElementById('cnt2');let s=performance.now();function st(n){const p=Math.min((n-s)/1800,1);const e=1-Math.pow(1-p,3);el.textContent='$'+(e*4.2).toFixed(1)+'M';if(p<1)requestAnimationFrame(st);}requestAnimationFrame(st); },100);
+  setTimeout(()=>animateCount(document.getElementById('cnt3'),34.7,'%',' ',1800),200);
+  setTimeout(()=>animateCount(document.getElementById('cnt4'),71,' clients',' ',1800),300);
+}
+
+/* ===== INTERSECTION OBSERVER ===== */
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      if(e.target.id==='hero'||e.target.classList.contains('hero-metrics'))startCounters();
+      if(e.target.id==='metricBars'){
+        const bars=e.target.querySelectorAll('.mbar-fill');
+        bars.forEach(b=>{setTimeout(()=>{b.style.width=b.dataset.w+'%';},200);});
+      }
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.15});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.stagger').forEach(el=>io.observe(el));
+document.getElementById('metricBars')&&io.observe(document.getElementById('metricBars'));
+
+/* ===== HERO MINI CHART ===== */
+window.addEventListener('load',()=>{
+  try{
+    const ctx=document.getElementById('heroChart');
+    if(!ctx)return;
+    new Chart(ctx,{
+      type:'line',
+      data:{
+        labels:['','','','','','','','','','','',''],
+        datasets:[
+          {data:[80,120,110,180,200,260,290,350,400,460,510,580],borderColor:'#00e5a0',backgroundColor:'rgba(0,229,160,0.06)',fill:true,tension:0.4,pointRadius:0,borderWidth:2},
+          {data:[30,50,45,80,90,120,140,160,200,230,260,300],borderColor:'#0ea5e9',backgroundColor:'rgba(14,165,233,0.04)',fill:true,tension:0.4,pointRadius:0,borderWidth:1.5}
+        ]
+      },
+      options:{
+        responsive:true,maintainAspectRatio:false,
+        animation:{duration:1500},
+        plugins:{legend:{display:false},tooltip:{enabled:false}},
+        scales:{x:{display:false},y:{display:false}},
+        layout:{padding:0}
+      }
+    });
+  }catch(e){}
+
+  /* ===== REVENUE CHART ===== */
+  try{
+    const rc=document.getElementById('revChart');
+    if(!rc)return;
+    const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const data=months.map((_,i)=>Math.round(142000*Math.pow((i+1)/12,0.7)));
+    new Chart(rc,{
+      type:'line',
+      data:{
+        labels:months,
+        datasets:[{
+          label:'Monthly Revenue',
+          data:data,
+          borderColor:'#00e5a0',
+          backgroundColor:'rgba(0,229,160,0.08)',
+          fill:true,tension:0.4,pointRadius:3,
+          pointBackgroundColor:'#00e5a0',
+          borderWidth:2
+        }]
+      },
+      options:{
+        responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{display:false}},
+        scales:{
+          x:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#3d4558',font:{size:10},maxRotation:0}},
+          y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#3d4558',font:{size:10},callback:v=>'$'+Math.round(v/1000)+'K'}}
+        }
+      }
+    });
+  }catch(e){}
+});
+
+/* ===== OUTREACH ===== */
+function selectTone(el){document.querySelectorAll('.tone-opt').forEach(b=>b.classList.remove('on'));el.classList.add('on');}
+function regenMsg(){
+  const btn=document.querySelector('.outreach-config .btn-primary');
+  btn.textContent='Generating...';btn.disabled=true;
+  setTimeout(()=>{
+    btn.innerHTML='<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.5 8A5.5 5.5 0 112.5 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M13.5 4v4h-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Generate with AI';
+    btn.disabled=false;
+  },1000);
+}
+function copyMsg(id){
+  const el=document.getElementById(id);
+  const text=el.innerText||el.textContent;
+  navigator.clipboard.writeText(text).catch(()=>{});
+  const btns=document.querySelectorAll('.copy-btn');
+  btns.forEach(b=>{if(b.onclick&&b.onclick.toString().includes(id)){b.textContent='Copied!';setTimeout(()=>b.textContent='Copy',1500);}});
+}
+
+/* ===== SMOOTH SCROLL ===== */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const target=document.querySelector(a.getAttribute('href'));
+    if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+</script>
+</body>
+</html>
